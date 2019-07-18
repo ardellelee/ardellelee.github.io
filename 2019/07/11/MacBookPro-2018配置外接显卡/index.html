@@ -90,16 +90,25 @@
 
 
 
-  <meta name="description" content="NLP Explorer | Coffee Junkie">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ardelle&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="背景我的常用笔记本是13寸Macbook Pro 2018，虽然公司把内存和SSD都升级到了顶配，但由于没有Nvidia GPU，平时只能当一块ssh的显示屏用，实在暴殄天物。最近从朋友那里接手了一个显卡坞，为了能愉快地在本机上调（wan）模（you）型（xi），花了一周多的时间研究了一下如何将外接显卡（eGPU）配置在macbook上，记录在此～ 小白入门，先介绍一些名词：  eGPU:  ex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MacBookPro 2018配置外接显卡">
+<meta property="og:url" content="http://yoursite.com/2019/07/11/MacBookPro-2018配置外接显卡/index.html">
 <meta property="og:site_name" content="Ardelle&#39;s Blog">
-<meta property="og:description" content="NLP Explorer | Coffee Junkie">
+<meta property="og:description" content="背景我的常用笔记本是13寸Macbook Pro 2018，虽然公司把内存和SSD都升级到了顶配，但由于没有Nvidia GPU，平时只能当一块ssh的显示屏用，实在暴殄天物。最近从朋友那里接手了一个显卡坞，为了能愉快地在本机上调（wan）模（you）型（xi），花了一周多的时间研究了一下如何将外接显卡（eGPU）配置在macbook上，记录在此～ 小白入门，先介绍一些名词：  eGPU:  ex">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/07/18/5d305a2a115f581997.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/18/5d30597e8a32f94275.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/07/18/5d30568b0d8e528399.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/18/5d30568b1b99e62675.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/18/5d308e700498926737.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/18/5d309743c6fe783780.png">
+<meta property="og:image" content="https://i.loli.net/2019/07/18/5d309743f241327907.png">
+<meta property="og:updated_time" content="2019-07-18T16:02:22.034Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ardelle&#39;s Blog">
-<meta name="twitter:description" content="NLP Explorer | Coffee Junkie">
+<meta name="twitter:title" content="MacBookPro 2018配置外接显卡">
+<meta name="twitter:description" content="背景我的常用笔记本是13寸Macbook Pro 2018，虽然公司把内存和SSD都升级到了顶配，但由于没有Nvidia GPU，平时只能当一块ssh的显示屏用，实在暴殄天物。最近从朋友那里接手了一个显卡坞，为了能愉快地在本机上调（wan）模（you）型（xi），花了一周多的时间研究了一下如何将外接显卡（eGPU）配置在macbook上，记录在此～ 小白入门，先介绍一些名词：  eGPU:  ex">
+<meta name="twitter:image" content="https://i.loli.net/2019/07/18/5d305a2a115f581997.png">
 
 
 
@@ -107,7 +116,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/07/11/MacBookPro-2018配置外接显卡/">
 
 
 
@@ -117,7 +126,7 @@
   };
 </script>
 
-  <title>Ardelle's Blog</title>
+  <title>MacBookPro 2018配置外接显卡 | Ardelle's Blog</title>
   
 
 
@@ -165,8 +174,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -204,7 +212,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -264,9 +272,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -298,10 +306,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/11/MacBookPro-2018配置外接显卡/" class="post-title-link" itemprop="url">MacBookPro 2018配置外接显卡</a>
+          <h1 class="post-title" itemprop="name headline">MacBookPro 2018配置外接显卡
+
               
             
           </h1>
@@ -380,9 +386,7 @@
       
 
       
-        
-          
-            <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>我的常用笔记本是13寸Macbook Pro 2018，虽然公司把内存和SSD都升级到了顶配，但由于没有Nvidia GPU，平时只能当一块ssh的显示屏用，实在暴殄天物。最近从朋友那里接手了一个显卡坞，为了能愉快地在本机上调（wan）模（you）型（xi），花了一周多的时间研究了一下如何将外接显卡（eGPU）配置在macbook上，记录在此～</p>
+        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>我的常用笔记本是13寸Macbook Pro 2018，虽然公司把内存和SSD都升级到了顶配，但由于没有Nvidia GPU，平时只能当一块ssh的显示屏用，实在暴殄天物。最近从朋友那里接手了一个显卡坞，为了能愉快地在本机上调（wan）模（you）型（xi），花了一周多的时间研究了一下如何将外接显卡（eGPU）配置在macbook上，记录在此～</p>
 <p>小白入门，先介绍一些名词：</p>
 <ul>
 <li>eGPU:  external GPU, 外接显卡</li>
@@ -453,14 +457,14 @@
 </ul>
 <h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p><a href="https://support.apple.com/zh-cn/HT201372" target="_blank" rel="noopener">如何创建可引导的 macOS 安装器</a><br><a href="https://blog.csdn.net/liuyangsds/article/details/72478519" target="_blank" rel="noopener">制作mac系统正式版U盘USB启动安装盘方法教程 (全新安装 Mac 系统)</a></p>
 
-          
-        
       
     </div>
 
     
 
     
+      
+    
 
     
     
@@ -473,172 +477,58 @@
     
     
 
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>Ardelle Lee</li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    
+    <a href="http://yoursite.com/2019/07/11/MacBookPro-2018配置外接显卡/" title="MacBookPro 2018配置外接显卡">http://yoursite.com/2019/07/11/MacBookPro-2018配置外接显卡/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.</li>
+</ul>
+
+      </div>
     
 
     <footer class="post-footer">
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/11/Blog开业/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ardelle Lee">
-      <meta itemprop="description" content="NLP Explorer | Coffee Junkie">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Ardelle's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/11/Blog开业/" class="post-title-link" itemprop="url">Blog开业</a>
-              
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-07-11 16:56:05 / Modified: 17:08:08" itemprop="dateCreated datePublished" datetime="2019-07-11T16:56:05+08:00">2019-07-11</time>
-            </span>
-          
-
-          
+              <a href="/2019/07/11/Blog开业/" rel="next" title="Blog开业">
+                <i class="fa fa-chevron-left"></i> Blog开业
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-          
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Blog正式开始营业了。</p>
-<p>中学时期写过很多文艺向的blog, 但这个会偏技术向一些。目前的计划是记录自己在技术学习（主要是NLP）路上的心得。如果勤奋，也会发一些杂篇，希望坚持码字～</p>
-<p>搭建Blog的过程主要参考了<a href="http://www.shuang0420.com/2016/05/12/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener">徐阿衡的guide</a> </p>
-<p>另外发现一处小bug：没有post的情况下，<code>hexo -g</code> 会无法生成 <code>index.html</code>这个文件，网站就起不来了。如果以后发现解决途径会继续记录～</p>
-<p>To 自己: 开业大吉， cheers!</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -648,14 +538,15 @@
   </article>
 
 
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -675,8 +566,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -746,6 +646,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#系统准备：macOS"><span class="nav-number">2.</span> <span class="nav-text">系统准备：macOS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#下载High-Sierra安装包"><span class="nav-number">2.1.</span> <span class="nav-text">下载High Sierra安装包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#制作U盘启动盘"><span class="nav-number">2.2.</span> <span class="nav-text">制作U盘启动盘</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置mac允许U盘启动"><span class="nav-number">2.3.</span> <span class="nav-text">设置mac允许U盘启动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从U盘安装High-Sierra"><span class="nav-number">2.4.</span> <span class="nav-text">从U盘安装High Sierra</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装Nvidia-Web-Driver"><span class="nav-number">3.</span> <span class="nav-text">安装Nvidia Web Driver</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#跑分验证"><span class="nav-number">4.</span> <span class="nav-text">跑分验证</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#References"><span class="nav-number">5.</span> <span class="nav-text">References</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -875,6 +792,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.2.0"></script>
+<script src="/js/post-details.js?v=7.2.0"></script>
+
+
 
   <script src="/js/next-boot.js?v=7.2.0"></script>
 
@@ -888,6 +809,8 @@
 
   
 
+
+  
 
 
   
