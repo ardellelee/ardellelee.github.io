@@ -382,78 +382,19 @@
       
         
           
-            <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>我的常用笔记本是13寸Macbook Pro 2018，虽然公司把内存和SSD都升级到了顶配，但由于没有Nvidia GPU，平时只能当一块ssh的显示屏用，实在暴殄天物。最近从朋友那里接手了一个显卡坞，为了能愉快地在本机上调（wan）模（you）型（xi），花了一周多的时间研究了一下如何将外接显卡（eGPU）配置在macbook上，记录在此～</p>
-<p>小白入门，先介绍一些名词：</p>
-<ul>
-<li>eGPU:  external GPU, 外接显卡</li>
-<li>Nvidia Web Driver:  Nvidia对macOS提供的显卡驱动</li>
-</ul>
-<p>Let’s start with:</p>
-<ul>
-<li>13-inch Macbook Pro (2018)</li>
-<li>AORUS GTX 1080 Gaming Box</li>
-<li>一块移动硬盘（需格式化，备份用）</li>
-<li>一块8g U盘 (制作系统启动盘)</li>
-</ul>
-<h1 id="系统准备：macOS"><a href="#系统准备：macOS" class="headerlink" title="系统准备：macOS"></a>系统准备：macOS</h1><p>首先注意，对于2018年中以后购买的macbook，出厂预装（shipped with）的系统版本均为10.14 Mojave。<br>然而，Nvidia没有为10.14以上的mac提供web driver驱动。 如果很不幸你当前的系统是Mojave，就需要备份后重装系统，将macOS版本降到High Sierra 10.13.6才能进行后续配置。10.13.6也是唯一一个支持2018版mbp硬件的High Sierra版本。</p>
-<p>如何备份系统： 推荐使用Time Machine</p>
-<p>如何降到macOS 10.13.6：</p>
-<ul>
-<li>如果出厂版本比High Sierra更早：（1）使用High Sierra时期的Time Machine备份 ；或者（2） 降到出厂版本后，从App Store下载官方的High Sierra Installer，升级到High Sierra</li>
-<li>如果出厂版本是High Sierra：可以<a href="https://support.apple.com/zh-cn/HT204904" target="_blank" rel="noopener">使用macOS恢复功能</a>恢复到High Sierra系统</li>
-<li>如果出厂版本是Mojave：需要自行下载10.13.6安装包，制作U盘启动盘，抹掉硬盘然后安装</li>
-</ul>
-<p>针对第三种情况，也就是出厂即为Mojave的macbook，下面介绍详细流程：</p>
-<h2 id="下载High-Sierra安装包"><a href="#下载High-Sierra安装包" class="headerlink" title="下载High Sierra安装包"></a>下载High Sierra安装包</h2><p>选择正确的High Sierra版本：较新的10.13.6有不同的build版本，一个系列是17GXX, 一个是17GXXXX。<br>2018款macbook pro需要选择后者（字母后有4位数字的）。<code>17G2208</code>是最早支持2018款macbook的build版本，数字大于2208的理论上都可以使用。</p>
-<p>特定版本的安装包不太好找，这里分享我找到的<a href="https://pan.baidu.com/s/1TbwlmUg4S751mVNTtpaDtg" target="_blank" rel="noopener">镜像</a>，提取码是<code>g9j8</code>。</p>
-<p>** 关于解压：部分安装包较大，使用了分卷压缩，将所有分卷下载后统一解压，即可得到<code>Install macOS High Sierra.app</code> **</p>
-<h2 id="制作U盘启动盘"><a href="#制作U盘启动盘" class="headerlink" title="制作U盘启动盘"></a>制作U盘启动盘</h2><ul>
-<li>使用mac系统自带的【磁盘工具】，将U盘格式化为APFS格式</li>
-<li>使用mac自带命令，将下载好的installer做成启动盘：（这里默认安装包放在<code>/Applications/</code>目录下；<code>--volumn</code>参数是U盘的mount路径，注意修改）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo /Applications/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="设置mac允许U盘启动"><a href="#设置mac允许U盘启动" class="headerlink" title="设置mac允许U盘启动"></a>设置mac允许U盘启动</h2><ul>
-<li>保持U盘插入，重启系统，看到苹果图标时按下<code>Command + R</code>进入恢复模式</li>
-<li>在恢复模式下输入命令<code>csrutil disable</code>，禁止macOS的SIP功能</li>
-<li><a href="https://support.apple.com/zh-cn/HT208330" target="_blank" rel="noopener">关闭T2芯片的Secure Boot功能，并允许从外部启动</a></li>
-</ul>
-<h2 id="从U盘安装High-Sierra"><a href="#从U盘安装High-Sierra" class="headerlink" title="从U盘安装High Sierra"></a>从U盘安装High Sierra</h2><ul>
-<li>保持U盘插入，重启系统，保持按住<code>option</code>键，可以看到两块硬盘：nac系统硬盘和U盘启动盘</li>
-<li>选择U盘启动盘，进入【实用工具】</li>
-<li>使用【磁盘工具】抹掉mac硬盘：<a href="https://support.apple.com/zh-cn/HT208496" target="_blank" rel="noopener">如何抹掉 Mac磁盘</a></li>
-<li>选择将High Sierra安装到mac硬盘上</li>
-</ul>
-<p>安装完毕后进入系统，看到High Sierra山湖相映的金色壁纸，可以检查一下系统环境已经配置好了～</p>
-<p><img src="https://i.loli.net/2019/07/18/5d305a2a115f581997.png" alt="os-wallpaper.png"><br><img src="https://i.loli.net/2019/07/18/5d30597e8a32f94275.jpg" alt="os.jpg"></p>
-<h1 id="安装Nvidia-Web-Driver"><a href="#安装Nvidia-Web-Driver" class="headerlink" title="安装Nvidia Web Driver"></a>安装Nvidia Web Driver</h1><blockquote>
-<p>重要的事强调三遍：版本很重要，版本很重要，版本很重要！</p>
-</blockquote>
-<p>在网上找到了一个web driver与macOS build版本的对照表：<a href="https://www.insanelymac.com/forum/topic/324195-nvidia-web-driver-updates-for-macos-high-sierra-update-may-15-2019/" target="_blank" rel="noopener">Nvidia Web Driver updates for macOS High Sierra (UPDATE May 15, 2019)</a>。<br>经过验证，新版（小版本号）的web driver可以与较旧版本的macOS兼容。但是<strong>考虑到后续的CUDA与cuDNN的兼容性问题，这里我选择最新的<code>387.10.10.10.40.128</code>版本</strong>。</p>
-<p>确定了版本号之后，可以直接使用GitHub上开源的<a href="https://github.com/learex/macOS-eGPU#step-by-step-guide" target="_blank" rel="noopener">脚本</a>进行自动化安装，只需指定版本号即可：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -s https://raw.githubusercontent.com/learex/macOS-eGPU/master/macOS-eGPU.sh) --install --nvidiaDriver 387.10.10.10.40.128</span><br></pre></td></tr></table></figure>
-
-<p>安装完毕可以在右上角菜单栏看到web driver的图标<br><img src="https://i.loli.net/2019/07/18/5d30568b0d8e528399.png" alt="driver_manager_icon.png"></p>
-<p>点击<code>Open Nvidia Driver Manager Preferences</code>，可以查看详情：<br><img src="https://i.loli.net/2019/07/18/5d30568b1b99e62675.png" alt="driver_manager.png"></p>
-<p>按住option键点击菜单栏的苹果图标，选择<code>System Information</code>，可以看到外接显卡已被成功检测到：<br><img src="https://i.loli.net/2019/07/18/5d308e700498926737.png" alt="system information.png"></p>
-<h1 id="跑分验证"><a href="#跑分验证" class="headerlink" title="跑分验证"></a>跑分验证</h1><p>使用一款简单的跑分软件<a href="https://www.geekbench.com" target="_blank" rel="noopener">Geek Bench</a>对电脑进行初步检测。选择检测GTX 1080，使用OpenCL Benchmark：<br><img src="https://i.loli.net/2019/07/18/5d309743c6fe783780.png" alt="geek bench.png"></p>
-<p>得到跑分如下：<br><img src="https://i.loli.net/2019/07/18/5d309743f241327907.png" alt="geek bench results.png"></p>
-<p>个人小白，不太了解性能指标，但能够跑分至少说明显卡驱动已经安装成功，显卡可以正常工作了～</p>
-<blockquote>
-<p>至此， mac上的Nvidia显卡驱动已经安装完毕。接下来如何配置一个可用的深度学习环境呢？下一篇文章会继续介绍～</p>
-</blockquote>
-<p><strong>下期提纲：</strong></p>
-<ul>
-<li>安装CUDA和cuDNN<ul>
-<li>CUDA，cuDNN： 深度学习GPU加速工具</li>
-</ul>
-</li>
-<li>编译正确版本的pytorch和torchvision</li>
-<li>试跑模型，验证eGPU加速深度学习模型</li>
-</ul>
-<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p><a href="https://support.apple.com/zh-cn/HT201372" target="_blank" rel="noopener">如何创建可引导的 macOS 安装器</a><br><a href="https://blog.csdn.net/liuyangsds/article/details/72478519" target="_blank" rel="noopener">制作mac系统正式版U盘USB启动安装盘方法教程 (全新安装 Mac 系统)</a></p>
-
+            <p>
+              背景我的常用笔记本是13寸Macbook Pro 2018，虽然公司把内存和SSD都升级到了顶配，但由于没有Nvidia GPU，平时只能当一块ssh的显示屏用，实在暴殄天物。最近从朋友那里接手了一个显卡坞，为了能愉快地在本机上调（wan）模（you）型（xi），花了一周多的时间研究了一下如何将外接
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/11/MacBookPro-2018配置外接显卡/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -601,13 +542,22 @@
       
         
           
-            <p>Blog正式开始营业了。</p>
-<p>中学时期写过很多文艺向的blog, 但这个会偏技术向一些。目前的计划是记录自己在技术学习（主要是NLP）路上的心得。如果勤奋，也会发一些杂篇，希望坚持码字～</p>
-<p>搭建Blog的过程主要参考了<a href="http://www.shuang0420.com/2016/05/12/Github-Pages-Hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener">徐阿衡的guide</a> </p>
-<p>另外发现一处小bug：没有post的情况下，<code>hexo -g</code> 会无法生成 <code>index.html</code>这个文件，网站就起不来了。如果以后发现解决途径会继续记录～</p>
-<p>To 自己: 开业大吉， cheers!</p>
-
+            <p>
+              Blog正式开始营业了。
+中学时期写过很多文艺向的blog, 但这个会偏技术向一些。目前的计划是记录自己在技术学习（主要是NLP）路上的心得。如果勤奋，也会发一些杂篇，希望坚持码字～
+搭建Blog的过程主要参考了徐阿衡的guide 
+另外发现一处小bug：没有post的情况下，hexo -g 会无法
+              ...
+            </p>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/07/11/Blog开业/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
